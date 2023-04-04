@@ -10,6 +10,11 @@
             <Entry x:Name="BoxPhone" Placeholder="Ingrese el telefono del cliente"  Text="{Binding Phone}"></Entry>
             <Label Text="Fecha de nacimiento"></Label>
             <DatePicker Date="1998-02-10" DateSelected="DatePicker_DateSelected"></DatePicker>
+            <StackLayout x:Name="AddressLayout">
+                <Button Text="Agregar" x:Name="BtnAddAddress" Clicked="OnAddressAdded"></Button>
+                <Button Text="Eliminar" x:Name="BtnRemoveAddress" Clicked="OnAddressRemoved"></Button>
+            </StackLayout>
+            
             <Button Text="Actualizar" x:Name="BtnActualizar" Clicked="OnUpdateCustomer"></Button>
         </StackLayout>
     </ContentPage.Content>

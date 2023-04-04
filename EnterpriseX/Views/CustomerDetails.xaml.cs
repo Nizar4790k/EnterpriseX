@@ -15,6 +15,7 @@ namespace EnterpriseX
     {
 
         private string selectedDate;
+        private int addressCounter = 0;
 
         public CustomerDetails(Customer customer)
         {
@@ -27,6 +28,8 @@ namespace EnterpriseX
         {
             base.OnAppearing();
             BtnActualizar.Clicked += OnUpdateCustomer;
+            BtnAddAddress.Clicked += OnAddressAdded;
+            
         }
 
         private  void OnUpdateCustomer(object sender, EventArgs e)
@@ -47,6 +50,40 @@ namespace EnterpriseX
         {
             selectedDate = e.NewDate.ToString("D");
         }
+
+        private void OnAddressAdded(object sender, EventArgs e)
+        {
+            
+            var button = (Button) sender;
+
+            StackLayout addressLayout = (StackLayout)button.Parent;
+            addressLayout.Children.Add(new Entry{ Placeholder = "Inserte la nueva direccion" });
+
+     
+
+
+        }
+
+
+        private void OnAddressRemoved(object sender, EventArgs e)
+        {
+
+            var button = (Button)sender;
+
+            StackLayout addressLayout = (StackLayout)button.Parent;
+            int last_position = addressLayout.Children.Count;
+            addressLayout.Children.RemoveAt(last_position - 1);
+
+
+
+
+
+        }
+
+
+
+
+       
     }
 
 
