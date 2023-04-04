@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnterpriseX.CustomerDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nombre"></Label>
+            <Entry x:Name="BoxName" Placeholder="Ingrese el nombre el cliente" Text="{Binding Name}"></Entry>
+            <Label Text="Telefono"></Label>
+            <Entry x:Name="BoxPhone" Placeholder="Ingrese el telefono del cliente"  Text="{Binding Phone}"></Entry>
+            <Label Text="Fecha de nacimiento"></Label>
+            <DatePicker Date="1998-02-10" DateSelected="DatePicker_DateSelected"></DatePicker>
+            <Button Text="Actualizar" x:Name="BtnActualizar" Clicked="OnUpdateCustomer"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

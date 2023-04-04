@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="EnterpriseX.MainPage"
+             
+             
+             >
+
+    <forms:ListView x:Name="MyListView">
+        <forms:ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}" Detail="{Binding Phone}"></TextCell>
+            </DataTemplate>
+        </forms:ListView.ItemTemplate>
+    </forms:ListView>
+
+</ContentPage>

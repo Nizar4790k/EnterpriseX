@@ -1,0 +1,21 @@
+# Visual Studio generated files
+*.userprefs
+*.suo
+*.sln.docstates
+
+# Build and bin output folders
+bin/
+obj/
+
+# NuGet packages
+packages/
+
+# Mono-specific files
+*.pidb
+*.mdb
+*.log
+*.tmp
+
+# Other temporary files
+[Tt]humbs.db
+*.DS_Store
