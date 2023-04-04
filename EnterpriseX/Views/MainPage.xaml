@@ -6,6 +6,11 @@
              
              >
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" IconImageSource="" Clicked="OnAddClicked" />
+        
+    </ContentPage.ToolbarItems>
+
     <forms:ListView x:Name="MyListView">
         <forms:ListView.ItemTemplate>
             <DataTemplate>

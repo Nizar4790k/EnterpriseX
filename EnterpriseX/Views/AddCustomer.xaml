@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnterpriseX.CustomerDetails">
+             x:Class="EnterpriseX.AddCustomer">
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete" IconImageSource="remove.png" Clicked="OnRemoveClicked" />
+
 
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
 
 
-   
+        
+
+
 
         <StackLayout>
                 <Label Text="Nombre"></Label>
@@ -33,7 +35,7 @@
                     
                 </ScrollView>
             <StackLayout>
-                <Button Text="Actualizar" x:Name="BtnActualizar" Clicked="OnUpdateCustomer"></Button>
+                <Button Text="Guardar" x:Name="BtnActualizar" Clicked="OnCreateCustomer"></Button>
             </StackLayout>
                 
 

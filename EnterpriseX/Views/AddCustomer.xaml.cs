@@ -12,72 +12,69 @@ using Xamarin.Forms.Xaml;
 namespace EnterpriseX
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CustomerDetails : ContentPage
+    public partial class AddCustomer : ContentPage
     {
 
     
     
         private Customer mCustomer;
         private StackLayout mAdressLayout;
+        private DateTime mDateOfBirth;
 
-        public CustomerDetails(Customer customer)
+        public AddCustomer()
         {
             InitializeComponent();
-            
-            mCustomer = customer;
-            BindingContext = mCustomer;
 
+         
+            BindingContext = mCustomer;
+            mAdressLayout = AddressLayout;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            DatePicker.Date = mCustomer.DateOfBirth;
+            DatePicker.Date = DateTime.Now;
 
-            
-
-            if (mCustomer.AddressList.Count > 0)
-            {
-                mCustomer.AddressList.ForEach(address =>
-                {
-                    AddressLayout.Children.Add(new Entry {Text = address });
-                });
-            }
-
-            mAdressLayout = AddressLayout;
-
-
+          
 
 
         }
 
-        private  void OnUpdateCustomer(object sender, EventArgs e)
+        private  void OnCreateCustomer(object sender, EventArgs e)
         {
-           mCustomer.Name = BoxName.Text;
-           mCustomer.Phone= BoxPhone.Text;
-           mCustomer.Email = BoxEmail.Text;
 
+            mCustomer = new Customer(BoxName.Text, BoxPhone.Text, mDateOfBirth, BoxEmail.Text, new List<string>());
+
+         
 
 
 
             mCustomer.AddressList.Clear();
             mCustomer.AddressList.TrimExcess();
 
-            for (int i= 3; i < mAdressLayout.Children.Count; i++)
+            if(mAdressLayout.Children.Count > 2)
             {
-
-
-                Entry textBox = (Entry)mAdressLayout.Children[i];
-
-               
-
-
-                if (!string.IsNullOrEmpty(textBox.Text))
+                for (int i = 3; i < mAdressLayout.Children.Count; i++)
                 {
-                    mCustomer.AddressList.Add(textBox.Text);
+
+
+                    Entry textBox = (Entry)mAdressLayout.Children[i];
+
+
+
+
+                    if (!string.IsNullOrEmpty(textBox.Text))
+                    {
+                        mCustomer.AddressList.Add(textBox.Text);
+                    }
                 }
+
+                   
             }
+
+
+           
 
             if (mCustomer.AddressList.Count == 0)
             {
@@ -85,7 +82,7 @@ namespace EnterpriseX
             }
             else
             {
-                DisplayAlert("Actualizado", "nombre:" + mCustomer.Name + ",telefono" + mCustomer.Phone + ",fecha " + mCustomer.DateOfBirth.ToString("D"), "Ok");
+                DisplayAlert("Insertado", "nombre:" + mCustomer.Name + ",telefono" + mCustomer.Phone + ",fecha " + mCustomer.DateOfBirth.ToString("D"), "Ok");
 
             }
 
@@ -98,7 +95,7 @@ namespace EnterpriseX
 
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            mCustomer.DateOfBirth = e.NewDate;
+            mDateOfBirth = e.NewDate;
             
         }
 
@@ -159,8 +156,6 @@ namespace EnterpriseX
 
         private void OnRemoveClicked(object sender, EventArgs e)
         {
-            mCustomer.ToString();
-
             // Handle the "Remove" toolbar item click here
         }
 
