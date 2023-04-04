@@ -16,6 +16,7 @@ namespace EnterpriseX
 
         private string selectedDate;
         private int addressCounter = 0;
+        private StackLayout addressLayout;
 
         public CustomerDetails(Customer customer)
         {
@@ -27,8 +28,8 @@ namespace EnterpriseX
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            BtnActualizar.Clicked += OnUpdateCustomer;
-            BtnAddAddress.Clicked += OnAddressAdded;
+           
+            
             
         }
 
