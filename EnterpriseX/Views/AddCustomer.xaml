@@ -4,38 +4,31 @@
              x:Class="EnterpriseX.AddCustomer">
 
 
-    <ContentPage.ToolbarItems>
-
-
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
 
-
-        
-
-
-
         <StackLayout>
-                <Label Text="Nombre"></Label>
-                <Entry x:Name="BoxName" Placeholder="Ingrese el nombre el cliente" Text="{Binding Name}"></Entry>
-                <Label Text="Telefono"></Label>
-                <Entry x:Name="BoxPhone" Placeholder="Ingrese el telefono del cliente"  Text="{Binding Phone}"></Entry>
+                <Label Text="Full Name"></Label>
+                <Entry x:Name="BoxName" Placeholder="Type the Full Name" Text="{Binding Name}"></Entry>
+                <Label Text="Phone"></Label>
+                <Entry x:Name="BoxPhone" Placeholder="Type the Phone"  Text="{Binding Phone}"></Entry>
                 <Label Text="Email"></Label>
-                <Entry x:Name="BoxEmail" Placeholder="Ingrese el email del cliente"  Text="{Binding Email}"></Entry>
-                <Label Text="Fecha de nacimiento"></Label>
-                <DatePicker x:Name="DatePicker" Date="{Binding DateOfbirth}" DateSelected="DatePicker_DateSelected"></DatePicker>
+                <Entry x:Name="BoxEmail" Placeholder="Type the Email"  Text="{Binding Email}"></Entry>
+                <Label Text="Birth Date"></Label>
+                <DatePicker x:Name="DatePicker" Date="{Binding DateOfBirth}" DateSelected="DatePicker_DateSelected"></DatePicker>
                 
                 <ScrollView>
                     <StackLayout x:Name="AddressLayout">
-                    <Label Text="Direccion(es)"></Label>
-                    <Button Text="Agregar" x:Name="BtnAddAddress" Clicked="OnAddressAdded"></Button>
-                    <Button Text="Eliminar" x:Name="BtnRemoveAddress" Clicked="OnAddressRemoved"></Button>
+                    <Label Text="Address"></Label>
+                    <Button Text="Add Address" x:Name="BtnAddAddress" BackgroundColor="Green" Clicked="OnAddressAdded"></Button>
+                    <Button Text="Remove Address" x:Name="BtnRemoveAddress" BackgroundColor="Red" Clicked="OnAddressRemoved"></Button>
                 </StackLayout>
                     
                 </ScrollView>
+           
             <StackLayout>
-                <Button Text="Guardar" x:Name="BtnActualizar" Clicked="OnCreateCustomer"></Button>
+                <Button Text="Save" x:Name="BtnUpdate" BackgroundColor ="Green" Clicked="OnCreateCustomer"></Button>
+                <Button Text="Cancel" x:Name="BtnGetBack" BackgroundColor="Red" Clicked="OnGetBack"></Button>
             </StackLayout>
                 
 

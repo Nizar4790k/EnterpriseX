@@ -24,9 +24,12 @@ namespace EnterpriseX
         public CustomerDetails(Customer customer)
         {
             InitializeComponent();
-            
+
+            Title = "Customer Details";
             mCustomer = customer;
             BindingContext = mCustomer;
+            
+            
 
         }
 
@@ -51,6 +54,11 @@ namespace EnterpriseX
 
 
 
+        }
+
+        private async void OnGetBack(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
 
         private void OnUpdateCustomer(object sender, EventArgs e)
@@ -82,11 +90,12 @@ namespace EnterpriseX
 
             if (mCustomer.AddressList.Count == 0)
             {
-                DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
+                DisplayAlert("Address", "Please add an address", "Ok");
             }
             else
             {
                  new FireBaseHelper().UpdateCustomer(mCustomer);
+                 Navigation.PopModalAsync();
 
             }
 
@@ -109,7 +118,7 @@ namespace EnterpriseX
             var button = (Button) sender;
 
             StackLayout addressLayout = (StackLayout)button.Parent;
-            addressLayout.Children.Add(new Entry{ Placeholder = "Inserte la nueva direccion" });
+            addressLayout.Children.Add(new Entry{ Placeholder = "Add the new address" });
 
      
 
@@ -146,7 +155,7 @@ namespace EnterpriseX
             }
             else
             {
-                DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
+                DisplayAlert("Address", "Please type an address", "Ok");
             }
 
             
@@ -158,9 +167,11 @@ namespace EnterpriseX
         }
 
 
-        private void OnRemoveClicked(object sender, EventArgs e)
+        private async void OnRemoveClicked(object sender, EventArgs e)
         {
             new FireBaseHelper().DeleteCustomer(mCustomer.Id);
+
+            await Navigation.PopModalAsync();
 
 
 

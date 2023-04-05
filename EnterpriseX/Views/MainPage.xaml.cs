@@ -21,6 +21,7 @@ namespace EnterpriseX
         public  MainPage()
         {
             InitializeComponent();
+            Title = "EntrepriseX";
             
             
 
@@ -32,21 +33,6 @@ namespace EnterpriseX
             base.OnAppearing();
 
             myCustomers = await new FireBaseHelper().GetAllCustomers();
-
-
-            /*
-            List<string> addresss1 = new List<string>();
-            addresss1.Add("En la casa que dice se alquila");
-            addresss1.Add("En la casa que dice se alquila1");
-            addresss1.Add("En la casa que dice se alquila3");
-            List<string> addresss2 = new List<string>();
-            addresss2.Add("En la casa que dice se vende");
-            addresss2.Add("En la casa que dice se vende1");
-
-
-            myCustomers.Add(new Customer("Juan", "809111111", DateTime.Parse("1993-02-04 00:00"), "juan@gmail.com", addresss1));
-            myCustomers.Add(new Customer("Pedro", "8092222222",DateTime.Parse("1996-06-04 00:00"),"pedro@gmail.com",addresss2));
-            */
             MyListView.ItemsSource = myCustomers;
             MyListView.ItemTapped += MyListView_ItemTapped;
         }

@@ -7,14 +7,14 @@
              >
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" IconImageSource="" Clicked="OnAddClicked" />
+        <ToolbarItem Text="Add" IconImageSource="addcustomer.png" Clicked="OnAddClicked" />
         
     </ContentPage.ToolbarItems>
 
     <forms:ListView x:Name="MyListView">
         <forms:ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}" Detail="{Binding Phone}"></TextCell>
+                <TextCell Text="{Binding Name}" Detail="{Binding Email}"></TextCell>
             </DataTemplate>
         </forms:ListView.ItemTemplate>
     </forms:ListView>

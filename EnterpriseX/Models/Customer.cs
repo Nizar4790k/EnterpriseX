@@ -13,6 +13,7 @@ namespace EnterpriseX.Models
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public Guid Id { get; set; }
+       
 
         
        public Customer()

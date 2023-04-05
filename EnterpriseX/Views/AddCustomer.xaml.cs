@@ -26,9 +26,11 @@ namespace EnterpriseX
         {
             InitializeComponent();
 
+            Title = "Add Customer";
          
             BindingContext = mCustomer;
             mAdressLayout = AddressLayout;
+            
         }
 
         protected override void OnAppearing()
@@ -40,6 +42,11 @@ namespace EnterpriseX
           
 
 
+        }
+
+        private async void OnGetBack(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
 
         private async void OnCreateCustomer(object sender, EventArgs e)
@@ -79,11 +86,12 @@ namespace EnterpriseX
 
             if (mCustomer.AddressList.Count == 0)
             {
-                await DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
+                await DisplayAlert("Address", "Please add an address", "Ok");
             }
             else
             {
                 await new FireBaseHelper().AddCustomer(mCustomer);
+                await Navigation.PopModalAsync();
 
             }
 
@@ -106,7 +114,7 @@ namespace EnterpriseX
             var button = (Button) sender;
 
             StackLayout addressLayout = (StackLayout)button.Parent;
-            addressLayout.Children.Add(new Entry{ Placeholder = "Inserte la nueva direccion" });
+            addressLayout.Children.Add(new Entry{ Placeholder = "Add the new address" });
 
      
 
@@ -126,24 +134,17 @@ namespace EnterpriseX
             
 
             if (addressLayout.Children.Count != 3)
-            {
-                Entry curentTextBoxDate = (Entry)addressLayout.Children[addressLayout.Children.Count - 1];
 
-                if ((addressLayout.Children.Count == mCustomer.AddressList.Count) && !string.IsNullOrEmpty(curentTextBoxDate.Text))
-                {
-                    addressLayout.Children.RemoveAt(addressLayout.Children.Count - 1);
-                    mCustomer.AddressList.RemoveAt(mCustomer.AddressList.Count - 1);
-                }
-                else
-                {
-                    addressLayout.Children.RemoveAt(addressLayout.Children.Count - 1);
-                }
+
+            {
+               
+                addressLayout.Children.RemoveAt(addressLayout.Children.Count - 1);
 
 
             }
             else
             {
-                DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
+                DisplayAlert("Address", "Please add an address", "Ok");
             }
 
             
