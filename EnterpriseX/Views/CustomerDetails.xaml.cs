@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -32,6 +33,13 @@ namespace EnterpriseX
             
 
         }
+
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
 
         protected override void OnAppearing()
         {
@@ -91,6 +99,9 @@ namespace EnterpriseX
             if (mCustomer.AddressList.Count == 0)
             {
                 DisplayAlert("Address", "Please add an address", "Ok");
+            }else if (!IsValidEmail(mCustomer.Email))
+            {
+                DisplayAlert("Address", "Please add a valid email ", "Ok");
             }
             else
             {
@@ -112,6 +123,7 @@ namespace EnterpriseX
             
         }
 
+       
         private void OnAddressAdded(object sender, EventArgs e)
         {
             

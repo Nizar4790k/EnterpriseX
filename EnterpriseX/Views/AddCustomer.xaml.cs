@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -87,6 +88,11 @@ namespace EnterpriseX
             if (mCustomer.AddressList.Count == 0)
             {
                 await DisplayAlert("Address", "Please add an address", "Ok");
+                return;
+            }else if (!IsValidEmail(mCustomer.Email))
+            {
+                await DisplayAlert("Address", "Please add a valid email", "Ok");
+                return;
             }
             else
             {
@@ -100,7 +106,18 @@ namespace EnterpriseX
 
 
 
+
+
+
+
         }
+
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
 
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
