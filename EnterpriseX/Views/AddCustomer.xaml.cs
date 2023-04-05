@@ -1,4 +1,5 @@
-﻿using EnterpriseX.Models;
+﻿using EnterpriseX.Controllers;
+using EnterpriseX.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace EnterpriseX
 
         }
 
-        private  void OnCreateCustomer(object sender, EventArgs e)
+        private async void OnCreateCustomer(object sender, EventArgs e)
         {
 
             mCustomer = new Customer(BoxName.Text, BoxPhone.Text, mDateOfBirth, BoxEmail.Text, new List<string>());
@@ -78,11 +79,11 @@ namespace EnterpriseX
 
             if (mCustomer.AddressList.Count == 0)
             {
-                DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
+                await DisplayAlert("Direccion", "Favor asociar una direccion", "Ok");
             }
             else
             {
-                DisplayAlert("Insertado", "nombre:" + mCustomer.Name + ",telefono" + mCustomer.Phone + ",fecha " + mCustomer.DateOfBirth.ToString("D"), "Ok");
+                await new FireBaseHelper().AddCustomer(mCustomer);
 
             }
 
@@ -154,10 +155,7 @@ namespace EnterpriseX
         }
 
 
-        private void OnRemoveClicked(object sender, EventArgs e)
-        {
-            // Handle the "Remove" toolbar item click here
-        }
+        
 
 
 

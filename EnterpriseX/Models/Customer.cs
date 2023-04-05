@@ -14,8 +14,11 @@ namespace EnterpriseX.Models
         public string Email { get; set; }
         public Guid Id { get; set; }
 
-
         
+       public Customer()
+        {
+
+        }
 
 
         public Customer (string name, string phone, DateTime dateOfBirth, string email,List<String> addressList)

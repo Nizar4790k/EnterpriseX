@@ -1,4 +1,5 @@
-﻿using EnterpriseX.Models;
+﻿using EnterpriseX.Controllers;
+using EnterpriseX.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,21 +14,27 @@ namespace EnterpriseX
     public partial class MainPage : ContentPage
     {
 
-        List<Customer> myCustomers = new List<Customer>();
+        List<Customer> myCustomers;
         private bool _isItemTappedHandled = false;
 
 
-        public MainPage()
+        public  MainPage()
         {
             InitializeComponent();
+            
+            
 
 
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
+            myCustomers = await new FireBaseHelper().GetAllCustomers();
+
+
+            /*
             List<string> addresss1 = new List<string>();
             addresss1.Add("En la casa que dice se alquila");
             addresss1.Add("En la casa que dice se alquila1");
@@ -39,7 +46,7 @@ namespace EnterpriseX
 
             myCustomers.Add(new Customer("Juan", "809111111", DateTime.Parse("1993-02-04 00:00"), "juan@gmail.com", addresss1));
             myCustomers.Add(new Customer("Pedro", "8092222222",DateTime.Parse("1996-06-04 00:00"),"pedro@gmail.com",addresss2));
-
+            */
             MyListView.ItemsSource = myCustomers;
             MyListView.ItemTapped += MyListView_ItemTapped;
         }

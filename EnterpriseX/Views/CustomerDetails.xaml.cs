@@ -1,4 +1,5 @@
-﻿using EnterpriseX.Models;
+﻿using EnterpriseX.Controllers;
+using EnterpriseX.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,7 @@ namespace EnterpriseX
 
         }
 
-        private  void OnUpdateCustomer(object sender, EventArgs e)
+        private void OnUpdateCustomer(object sender, EventArgs e)
         {
            mCustomer.Name = BoxName.Text;
            mCustomer.Phone= BoxPhone.Text;
@@ -85,7 +86,7 @@ namespace EnterpriseX
             }
             else
             {
-                DisplayAlert("Actualizado", "nombre:" + mCustomer.Name + ",telefono" + mCustomer.Phone + ",fecha " + mCustomer.DateOfBirth.ToString("D"), "Ok");
+                 new FireBaseHelper().UpdateCustomer(mCustomer);
 
             }
 
@@ -159,7 +160,9 @@ namespace EnterpriseX
 
         private void OnRemoveClicked(object sender, EventArgs e)
         {
-            mCustomer.ToString();
+            new FireBaseHelper().DeleteCustomer(mCustomer.Id);
+
+
 
             // Handle the "Remove" toolbar item click here
         }
